@@ -31,14 +31,14 @@ export function HowItWorks() {
   const sectionRef = useScrollReveal<HTMLElement>();
 
   return (
-    <section id="how-it-works" ref={sectionRef} className="reveal py-20 sm:py-28 bg-gray-50 border-y border-gray-100">
+    <section id="how-it-works" ref={sectionRef} className="reveal py-20 sm:py-28 bg-gray-50 dark:bg-[#0d131f] border-y border-gray-100 dark:border-slate-800/80 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-950 dark:text-white tracking-tight">
             Up and running in minutes
           </h2>
-          <p className="mt-4 text-lg text-gray-500 leading-relaxed">
+          <p className="mt-4 text-lg text-gray-500 dark:text-gray-400 leading-relaxed">
             No complex instrumentation. No month-long rollouts.
           </p>
         </div>
@@ -47,20 +47,20 @@ export function HowItWorks() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 relative">
           {/* Connector line (desktop only) */}
           <div
-            className="hidden md:block absolute top-8 left-[16.6%] right-[16.6%] h-px bg-gray-200"
+            className="hidden md:block absolute top-8 left-[16.6%] right-[16.6%] h-px bg-gray-200 dark:bg-slate-800"
             aria-hidden="true"
           />
 
           {steps.map((step) => (
             <div key={step.number} className="relative text-center">
               {/* Step number circle */}
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white border-2 border-brand-200 text-brand-600 font-bold text-sm mb-5 relative z-10">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white dark:bg-[#131B2B] border-2 border-brand-200 dark:border-brand-500/40 text-brand-600 dark:text-brand-400 font-bold text-sm mb-5 relative z-10 shadow-sm transition-colors">
                 {step.number}
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                 {step.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto">
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs mx-auto">
                 {step.description}
               </p>
             </div>

@@ -12,16 +12,18 @@
 
 ---
 
-## 2. One trade-off under the time limit
+## 2. Dark Mode Implementation & Polish
 
-**Trade-off:** No dark mode. The assessment states dark mode is "all-or-nothing" — a half-implemented theme is worse than none. A complete dark mode (backgrounds, text, borders, cards, charts, tooltips, focus rings, hover states, the entire dashboard preview, status colors) would have doubled the styling surface area and the bug surface with it.
+**Implemented:** Full, first-class Dark Mode support (Light & Midnight Dark Blue). A dedicated moon/sun circular toggle in the navigation bar allows users to switch seamlessly. It includes:
+- System preference detection via `prefers-color-scheme`
+- `localStorage` persistence (`pulse-theme`)
+- Complete theme coverage across all components, cards, typography, navigation, modals, and borders
+- Zero color collisions or unreadable contrast states across both light and dark themes
 
-**With a real week I would:**
-- Implement full dark mode via CSS custom properties + `data-theme` attribute with system preference detection
+**Future optimizations with more time:**
 - Lazy-load Recharts so the chart only loads when the dashboard viewport is near (~400kB saved from initial bundle)
-- Add interactive chart features (time range selector, hover detail panels)
-- Build a purpose-designed mobile dashboard layout instead of reflowing the desktop grid
-- Write Playwright visual regression tests at 390px, 768px, 1024px, and 1440px
+- Purpose-built animated micro-interactions for live telemetry streaming
+- Playwright automated visual regression test suite across multiple viewports
 
 ---
 

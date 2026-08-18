@@ -9,6 +9,7 @@ import { FinalCTA } from './sections/FinalCTA';
 import { Footer } from './sections/Footer';
 import { GetStartedModal } from './components/GetStartedModal';
 import { useKonamiCode } from './hooks/useKonamiCode';
+import { useTheme } from './hooks/useTheme';
 
 /**
  * Root application component.
@@ -16,13 +17,14 @@ import { useKonamiCode } from './hooks/useKonamiCode';
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const easterEgg = useKonamiCode();
+  const { isDark, toggleTheme } = useTheme();
 
   const handleOpenGetStarted = () => {
     setModalOpen(true);
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-[#0B0F17] text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-brand-500 focus:text-white focus:rounded-lg"
@@ -30,7 +32,11 @@ function App() {
         Skip to main content
       </a>
 
-      <Navbar onOpenGetStarted={handleOpenGetStarted} />
+      <Navbar
+        isDark={isDark}
+        onToggleTheme={toggleTheme}
+        onOpenGetStarted={handleOpenGetStarted}
+      />
 
       <main id="main-content">
         <Hero onOpenGetStarted={handleOpenGetStarted} />

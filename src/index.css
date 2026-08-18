@@ -29,12 +29,15 @@
   --color-status-degraded: oklch(0.80 0.16 85);
   --color-status-down: oklch(0.63 0.21 25);
 
-  /* Surface tones for the dashboard preview */
+  /* Surface tones for the dashboard preview & dark theme */
   --color-surface-dark: oklch(0.16 0.02 260);
   --color-surface-card: oklch(0.20 0.02 260);
   --color-surface-card-hover: oklch(0.23 0.02 260);
   --color-surface-border: oklch(0.28 0.02 260);
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 
 
 /* --- Base resets --- */

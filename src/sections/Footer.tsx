@@ -6,7 +6,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-gray-100 bg-white" role="contentinfo">
+    <footer className="border-t border-gray-100 dark:border-slate-800/80 bg-white dark:bg-[#0B0F17] transition-colors duration-200" role="contentinfo">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Brand */}
@@ -29,18 +29,18 @@ export function Footer() {
                 fill="none"
               />
             </svg>
-            <span className="text-sm font-semibold text-gray-900">Pulse</span>
+            <span className="text-sm font-semibold text-gray-900 dark:text-white">Pulse</span>
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-6 text-sm text-gray-500">
-            <a href="#product" className="hover:text-gray-900 transition-colors">Product</a>
-            <a href="#docs" className="hover:text-gray-900 transition-colors">Docs</a>
-            <a href="#pricing" className="hover:text-gray-900 transition-colors">Pricing</a>
+          <div className="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+            <a href="#product" className="hover:text-gray-900 dark:hover:text-white transition-colors">Product</a>
+            <a href="#docs" className="hover:text-gray-900 dark:hover:text-white transition-colors">Docs</a>
+            <a href="#pricing" className="hover:text-gray-900 dark:hover:text-white transition-colors">Pricing</a>
           </div>
 
           {/* Copyright */}
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-400 dark:text-gray-500">
             © {currentYear} Pulse · Product concept for demonstration
           </p>
         </div>

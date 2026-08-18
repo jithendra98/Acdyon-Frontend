@@ -38,9 +38,9 @@ export function Button({
     primary:
       'bg-brand-500 text-white hover:bg-brand-600 active:bg-brand-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0',
     secondary:
-      'bg-white text-gray-900 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100 hover:-translate-y-0.5 active:translate-y-0',
+      'bg-white dark:bg-slate-800 text-gray-900 dark:text-white border border-gray-200 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-600 hover:bg-gray-50 dark:hover:bg-slate-700/80 active:bg-gray-100 dark:active:bg-slate-700 hover:-translate-y-0.5 active:translate-y-0',
     ghost:
-      'text-gray-600 hover:text-gray-900 hover:bg-gray-100 active:bg-gray-200',
+      'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-800 active:bg-gray-200 dark:active:bg-slate-700',
   };
 
   const sizes = {

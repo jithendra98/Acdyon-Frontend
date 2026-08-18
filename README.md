@@ -141,7 +141,6 @@ AI tools (Gemini/Claude) were used to generate initial component code, which was
 
 ## Known Limitations
 
-1. **Navigation links** — `#product`, `#docs`, `#pricing` are anchor placeholders. In a real product, these would route to separate pages
-2. **Bundle size** — Recharts adds ~400kB to the JS bundle. For a production app, we'd consider lazy-loading the chart component or using a lighter charting solution
-3. **No dark mode** — Intentionally omitted per the assessment's "all-or-nothing" rule
-4. **No real API integration** — The dashboard uses static demo data. A real product would use WebSocket/SSE for live data
+1. **Navigation links** — `#product`, `#capabilities`, `#how-it-works` are section anchor links.
+2. **Bundle size** — Recharts adds ~400kB to the JS bundle. For a high-scale production app, we'd consider lazy-loading the chart component.
+3. **No real API integration** — The dashboard uses static demo data. A real product would use WebSocket/SSE for live data.

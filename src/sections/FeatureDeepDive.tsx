@@ -10,19 +10,19 @@ export function FeatureDeepDive() {
   const [acknowledged, setAcknowledged] = useState(false);
 
   return (
-    <section id="features" ref={sectionRef} className="reveal py-20 sm:py-28 bg-white">
+    <section id="features" ref={sectionRef} className="reveal py-20 sm:py-28 bg-white dark:bg-[#0B0F17] transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text side */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-100 mb-5">
-              <span className="text-xs font-medium text-brand-700">Smart Alerts</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-950/70 border border-brand-100 dark:border-brand-800/80 mb-5 transition-colors">
+              <span className="text-xs font-medium text-brand-700 dark:text-brand-300">Smart Alerts</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-950 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-950 dark:text-white tracking-tight leading-tight">
               Get alerted when it matters,{' '}
-              <span className="text-brand-500">not when it doesn't</span>
+              <span className="text-brand-500 dark:text-brand-400">not when it doesn't</span>
             </h2>
-            <p className="mt-5 text-gray-500 leading-relaxed">
+            <p className="mt-5 text-gray-500 dark:text-gray-400 leading-relaxed">
               Pulse learns your API's normal behavior and only fires alerts when
               something genuinely deviates. No more alarm fatigue from noisy
               thresholds.
@@ -33,9 +33,9 @@ export function FeatureDeepDive() {
                 'Group related errors to reduce duplicate alerts',
                 'Route to Slack, PagerDuty, or webhooks',
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                <li key={item} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
                   <svg
-                    className="w-5 h-5 text-brand-500 mt-0.5 shrink-0"
+                    className="w-5 h-5 text-brand-500 dark:text-brand-400 mt-0.5 shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

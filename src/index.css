@@ -1,0 +1,101 @@
+/* Google Fonts: Inter — loaded with display=swap for fast first paint */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/*
+ * Pulse — Global Styles
+ * Using Tailwind v4's CSS-first config via @theme.
+ */
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Brand palette */
+  --color-brand-50: oklch(0.97 0.01 250);
+  --color-brand-100: oklch(0.93 0.03 250);
+  --color-brand-200: oklch(0.86 0.06 250);
+  --color-brand-300: oklch(0.76 0.10 250);
+  --color-brand-400: oklch(0.65 0.15 250);
+  --color-brand-500: oklch(0.55 0.20 250);
+  --color-brand-600: oklch(0.48 0.22 250);
+  --color-brand-700: oklch(0.40 0.18 250);
+  --color-brand-800: oklch(0.33 0.14 250);
+  --color-brand-900: oklch(0.25 0.10 250);
+  --color-brand-950: oklch(0.18 0.07 250);
+
+  /* Semantic status colors */
+  --color-status-healthy: oklch(0.72 0.19 152);
+  --color-status-degraded: oklch(0.80 0.16 85);
+  --color-status-down: oklch(0.63 0.21 25);
+
+  /* Surface tones for the dashboard preview */
+  --color-surface-dark: oklch(0.16 0.02 260);
+  --color-surface-card: oklch(0.20 0.02 260);
+  --color-surface-card-hover: oklch(0.23 0.02 260);
+  --color-surface-border: oklch(0.28 0.02 260);
+}
+
+
+/* --- Base resets --- */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Scroll-reveal animation --- */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.visible {
+  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger children inside a reveal-group */
+.reveal-group .reveal:nth-child(1) { animation-delay: 0ms; }
+.reveal-group .reveal:nth-child(2) { animation-delay: 80ms; }
+.reveal-group .reveal:nth-child(3) { animation-delay: 160ms; }
+.reveal-group .reveal:nth-child(4) { animation-delay: 240ms; }
+
+/* --- Method badge colors (dashboard) --- */
+.method-get { color: oklch(0.72 0.19 152); }
+.method-post { color: oklch(0.70 0.17 250); }
+.method-put { color: oklch(0.80 0.16 85); }
+.method-delete { color: oklch(0.63 0.21 25); }
+
+/* --- Focus ring utility --- */
+:focus-visible {
+  outline: 2px solid var(--color-brand-400);
+  outline-offset: 2px;
+}

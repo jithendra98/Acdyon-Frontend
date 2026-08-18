@@ -27,18 +27,11 @@ const steps: Step[] = [
   },
 ];
 
-/**
- * "How It Works" section — a 3-step linear flow.
- *
- * Uses a horizontal connector line on desktop and a vertical
- * numbered list on mobile. Keeps the mental model simple:
- * connect → monitor → resolve.
- */
 export function HowItWorks() {
   const sectionRef = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={sectionRef} className="reveal py-20 sm:py-28 bg-gray-50 border-y border-gray-100">
+    <section id="how-it-works" ref={sectionRef} className="reveal py-20 sm:py-28 bg-gray-50 border-y border-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center max-w-2xl mx-auto mb-14">

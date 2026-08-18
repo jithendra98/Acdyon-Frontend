@@ -1,13 +1,11 @@
 import { Button } from '../components/Button';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-/**
- * Final CTA section — closes the page with a single clear action.
- *
- * Uses the dark surface background to create contrast with the white
- * sections above, drawing the eye naturally to the CTA button.
- */
-export function FinalCTA() {
+interface FinalCTAProps {
+  onOpenGetStarted: () => void;
+}
+
+export function FinalCTA({ onOpenGetStarted }: FinalCTAProps) {
   const sectionRef = useScrollReveal<HTMLElement>();
 
   return (
@@ -28,7 +26,7 @@ export function FinalCTA() {
           See your first dashboard before your coffee gets cold.
         </p>
         <div className="mt-8">
-          <Button size="lg">
+          <Button size="lg" onClick={onOpenGetStarted}>
             Get Started — Free
           </Button>
         </div>

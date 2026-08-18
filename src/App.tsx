@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Navbar } from './sections/Navbar';
 import { Hero } from './sections/Hero';
 import { ProductPreview } from './sections/ProductPreview';
@@ -6,26 +7,19 @@ import { HowItWorks } from './sections/HowItWorks';
 import { FeatureDeepDive } from './sections/FeatureDeepDive';
 import { FinalCTA } from './sections/FinalCTA';
 import { Footer } from './sections/Footer';
+import { GetStartedModal } from './components/GetStartedModal';
 import { useKonamiCode } from './hooks/useKonamiCode';
 
 /**
  * Root application component.
- *
- * Page flow:
- * 1. Navbar (fixed, frosted glass)
- * 2. Hero (what + why + CTA)
- * 3. Product Preview (the visual centerpiece — dark dashboard)
- * 4. Capabilities (3 feature cards)
- * 5. How It Works (3-step flow)
- * 6. Feature Deep Dive (smart alerts + secondary visual)
- * 7. Final CTA (closing action)
- * 8. Footer
- *
- * Each section is self-contained. No shared state between sections.
- * The only global state is the mobile menu toggle inside Navbar.
  */
 function App() {
+  const [modalOpen, setModalOpen] = useState(false);
   const easterEgg = useKonamiCode();
+
+  const handleOpenGetStarted = () => {
+    setModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -36,18 +30,24 @@ function App() {
         Skip to main content
       </a>
 
-      <Navbar />
+      <Navbar onOpenGetStarted={handleOpenGetStarted} />
 
       <main id="main-content">
-        <Hero />
+        <Hero onOpenGetStarted={handleOpenGetStarted} />
         <ProductPreview />
         <Capabilities />
         <HowItWorks />
         <FeatureDeepDive />
-        <FinalCTA />
+        <FinalCTA onOpenGetStarted={handleOpenGetStarted} />
       </main>
 
       <Footer />
+
+      {/* Interactive Quickstart & Sandbox Modal */}
+      <GetStartedModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
 
       {/* Easter egg toast — Konami code: ↑↑↓↓←→←→BA */}
       {easterEgg && (
@@ -65,4 +65,3 @@ function App() {
 }
 
 export default App;
-

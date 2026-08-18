@@ -27,20 +27,11 @@ const capabilities: Capability[] = [
   },
 ];
 
-/**
- * Three capability cards highlighting the core product features.
- *
- * Design notes:
- * - Three cards, not four (avoids awkward grid on tablet)
- * - Each card has: icon, title, description
- * - No fake metrics or percentages
- * - Scroll-reveal with stagger (handled by .reveal-group CSS)
- */
 export function Capabilities() {
   const sectionRef = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={sectionRef} className="reveal py-20 sm:py-28 bg-white">
+    <section id="capabilities" ref={sectionRef} className="reveal py-20 sm:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center max-w-2xl mx-auto mb-14">

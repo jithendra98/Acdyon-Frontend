@@ -1,14 +1,28 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, AnchorHTMLAttributes, ReactNode } from 'react';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type BaseProps = {
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
-}
+  className?: string;
+};
+
+type ButtonAsButton = BaseProps &
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: never;
+  };
+
+type ButtonAsAnchor = BaseProps &
+  AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string;
+  };
+
+export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
 /**
- * Shared button component with three visual variants.
- * Sizes map to specific padding/font-size combinations — no magic numbers.
+ * Shared Button component with primary, secondary, and ghost variants.
+ * Automatically renders as an anchor tag `<a>` when `href` is provided,
+ * otherwise renders as a `<button>`.
  */
 export function Button({
   variant = 'primary',
@@ -22,9 +36,9 @@ export function Button({
 
   const variants = {
     primary:
-      'bg-brand-500 text-white hover:bg-brand-600 active:bg-brand-700 shadow-sm hover:shadow-md',
+      'bg-brand-500 text-white hover:bg-brand-600 active:bg-brand-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0',
     secondary:
-      'bg-white text-gray-900 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100',
+      'bg-white text-gray-900 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100 hover:-translate-y-0.5 active:translate-y-0',
     ghost:
       'text-gray-600 hover:text-gray-900 hover:bg-gray-100 active:bg-gray-200',
   };
@@ -35,10 +49,23 @@ export function Button({
     lg: 'px-7 py-3 text-base',
   };
 
+  const combinedClasses = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
+
+  if ('href' in props && props.href) {
+    return (
+      <a
+        className={combinedClasses}
+        {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
     <button
-      className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}
-      {...props}
+      className={combinedClasses}
+      {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       {children}
     </button>

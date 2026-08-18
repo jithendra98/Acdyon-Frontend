@@ -1,27 +1,22 @@
 import { useState } from 'react';
 import { Button } from '../components/Button';
 
+interface NavbarProps {
+  onOpenGetStarted: () => void;
+}
+
 /**
  * Responsive navigation bar.
- *
  * Desktop: horizontal links + CTA button.
  * Mobile: hamburger toggle → vertical slide-down menu.
- *
- * The nav links are minimal and relevant to the product:
- * - Product: what it does
- * - Docs: developer trust signal
- * - Pricing: expected for SaaS
- *
- * All links use # anchors since this is a single-page demo.
- * In a real app, these would route to separate pages.
  */
-export function Navbar() {
+export function Navbar({ onOpenGetStarted }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
     { label: 'Product', href: '#product' },
-    { label: 'Docs', href: '#docs' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'Capabilities', href: '#capabilities' },
+    { label: 'How It Works', href: '#how-it-works' },
   ];
 
   return (
@@ -34,7 +29,6 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo / Brand */}
           <a href="#" className="flex items-center gap-2 group" aria-label="Pulse home">
-            {/* Inline SVG pulse icon — no external asset needed */}
             <svg
               width="28"
               height="28"
@@ -73,7 +67,9 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <Button size="sm">Get Started</Button>
+            <Button size="sm" onClick={onOpenGetStarted}>
+              Get Started
+            </Button>
           </div>
 
           {/* Mobile hamburger */}
@@ -85,12 +81,10 @@ export function Navbar() {
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileOpen ? (
-              // X icon
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M6 6l12 12M6 18L18 6" />
               </svg>
             ) : (
-              // Hamburger icon
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -118,7 +112,14 @@ export function Navbar() {
             </a>
           ))}
           <div className="pt-2">
-            <Button size="sm" className="w-full">
+            <Button
+              size="sm"
+              className="w-full"
+              onClick={() => {
+                setMobileOpen(false);
+                onOpenGetStarted();
+              }}
+            >
               Get Started
             </Button>
           </div>
